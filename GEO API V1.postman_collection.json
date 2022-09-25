@@ -1,0 +1,2637 @@
+{
+	"info": {
+		"_postman_id": "e29a39ba-1bd8-4bcc-9d6f-0f5ab8b82a09",
+		"name": "GEO API V1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19142912"
+	},
+	"item": [
+		{
+			"name": "Поиск средств размещений по окружности",
+			"item": [
+				{
+					"name": "Отсутствие API токена",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"No API key found in request\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ApIKEY",
+								"value": "47306034-78fc-4767-bfd9-25e78825b985",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/{{circle-search}}?latitude=56.637028&longitude=47.8772&radius=10000&count=500",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{circle-search}}"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "56.637028"
+								},
+								{
+									"key": "longitude",
+									"value": "47.8772"
+								},
+								{
+									"key": "radius",
+									"value": "10000"
+								},
+								{
+									"key": "count",
+									"value": "500"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Валидные обязательные и необязательные параметры",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/{{circle-search}}?latitude=56.637028&longitude=47.8772&radius=10000&count=500",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{circle-search}}"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "56.637028"
+								},
+								{
+									"key": "longitude",
+									"value": "47.8772"
+								},
+								{
+									"key": "radius",
+									"value": "10000"
+								},
+								{
+									"key": "count",
+									"value": "500"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Поиск средства размещения PartnerAPI 10",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"PartnerAPI 10\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.properties[0].name).to.eql(\"PartnerAPI 10\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/{{circle-search}}?latitude=43.570503&longitude=39.73193&radius=10000&count=500",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{circle-search}}"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "43.570503"
+								},
+								{
+									"key": "longitude",
+									"value": "39.73193"
+								},
+								{
+									"key": "radius",
+									"value": "10000"
+								},
+								{
+									"key": "count",
+									"value": "500"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Отсутствие необязательных параметров",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/{{circle-search}}?radius=10000",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{circle-search}}"
+							],
+							"query": [
+								{
+									"key": "radius",
+									"value": "10000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Отсутствие обязательного параметра radius",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/{{circle-search}}?latitude=56.637028&longitude=47.8772&count=500",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{circle-search}}"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "56.637028"
+								},
+								{
+									"key": "longitude",
+									"value": "47.8772"
+								},
+								{
+									"key": "count",
+									"value": "500"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Пустые параметры",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"message\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.title).to.eql(\"One or more validation errors occurred.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/{{circle-search}}?latitude=&longitude=&radius=&count=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{circle-search}}"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": ""
+								},
+								{
+									"key": "longitude",
+									"value": ""
+								},
+								{
+									"key": "radius",
+									"value": ""
+								},
+								{
+									"key": "count",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение latitude ниже границы",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/{{circle-search}}?latitude=-90.000001&longitude=47.8772&radius=10000&count=500",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{circle-search}}"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "-90.000001"
+								},
+								{
+									"key": "longitude",
+									"value": "47.8772"
+								},
+								{
+									"key": "radius",
+									"value": "10000"
+								},
+								{
+									"key": "count",
+									"value": "500"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение latitude выше границы",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/{{circle-search}}?latitude=90.000001&longitude=47.8772&radius=10000&count=500",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{circle-search}}"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "90.000001"
+								},
+								{
+									"key": "longitude",
+									"value": "47.8772"
+								},
+								{
+									"key": "radius",
+									"value": "10000"
+								},
+								{
+									"key": "count",
+									"value": "500"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение longitude ниже границы",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/{{circle-search}}?latitude=56.637028&longitude=-180.0001&radius=10000&count=500",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{circle-search}}"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "56.637028"
+								},
+								{
+									"key": "longitude",
+									"value": "-180.0001"
+								},
+								{
+									"key": "radius",
+									"value": "10000"
+								},
+								{
+									"key": "count",
+									"value": "500"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение longitude выше границы",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/{{circle-search}}?latitude=56.637028&longitude=180.0001&radius=10000&count=500",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{circle-search}}"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "56.637028"
+								},
+								{
+									"key": "longitude",
+									"value": "180.0001"
+								},
+								{
+									"key": "radius",
+									"value": "10000"
+								},
+								{
+									"key": "count",
+									"value": "500"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение radius ниже границы",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/{{circle-search}}?latitude=56.637028&longitude=47.8772&radius=0&count=500",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{circle-search}}"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "56.637028"
+								},
+								{
+									"key": "longitude",
+									"value": "47.8772"
+								},
+								{
+									"key": "radius",
+									"value": "0"
+								},
+								{
+									"key": "count",
+									"value": "500"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение radius выше границы",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/{{circle-search}}?latitude=56.637028&longitude=47.8772&radius=30001&count=500",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{circle-search}}"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "56.637028"
+								},
+								{
+									"key": "longitude",
+									"value": "47.8772"
+								},
+								{
+									"key": "radius",
+									"value": "30001"
+								},
+								{
+									"key": "count",
+									"value": "500"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Поиск средств размещений по стране",
+			"item": [
+				{
+					"name": "Отсутствие API токена",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"    \r",
+									"pm.test(\"Token is not found\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"No API key found in request\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/countries/RUS/properties?count=500&since=null",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"countries",
+								"RUS",
+								"properties"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "500"
+								},
+								{
+									"key": "since",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Поиск средств размещения RUS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"    \r",
+									"pm.test(\"RUS\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.properties[0].countryCode).to.eql(\"RUS\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Count is 20\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.properties.length).to.eql(20);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/countries/RUS/properties?count=500&since=null",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"countries",
+								"RUS",
+								"properties"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "500"
+								},
+								{
+									"key": "since",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Отсутствие необязательных параметров",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/countries/RUS/properties",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"countries",
+								"RUS",
+								"properties"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение CountryCode ниже границы",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/countries/RU/properties?count=500&since=null",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"countries",
+								"RU",
+								"properties"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "500"
+								},
+								{
+									"key": "since",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение CountryCode выше границы",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/countries/RUSS/properties?count=500&since=null",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"countries",
+								"RUSS",
+								"properties"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "500"
+								},
+								{
+									"key": "since",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение CountryCode цифры",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/countries/010/properties?count=500&since=null",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"countries",
+								"010",
+								"properties"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "500"
+								},
+								{
+									"key": "since",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение CountryCode спецсимволы",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/countries/@!~/properties?count=500&since=null",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"countries",
+								"@!~",
+								"properties"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "500"
+								},
+								{
+									"key": "since",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение Count ниже границы",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"    \r",
+									"pm.test(\"Invalid count\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.errors[0].message).to.eql(\"Invalid count 0, max: 500, min: 1\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/countries/RUS/properties?count=0&since=null",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"countries",
+								"RUS",
+								"properties"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "0"
+								},
+								{
+									"key": "since",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение Count выше границы",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"    \r",
+									"pm.test(\"Invalid count\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.errors[0].message).to.eql(\"Invalid count 501, max: 500, min: 1\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/countries/RUS/properties?count=501&since=null",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"countries",
+								"RUS",
+								"properties"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "501"
+								},
+								{
+									"key": "since",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Поиск средств размещений по региону",
+			"item": [
+				{
+					"name": "Отсутствие API токена",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"    \r",
+									"pm.test(\"Token is not found\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"No API key found in request\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/regions/44/properties?count=500&since=null",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"regions",
+								"44",
+								"properties"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "500"
+								},
+								{
+									"key": "since",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Поиск средств размещения 44",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"    \r",
+									"pm.test(\"RUS\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    for (i = 0; i >= 0, i++;) {\r",
+									"        pm.expect(jsonData.properties[i].regionId).to.eql(\"44\");\r",
+									"    }\r",
+									"    \r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/regions/44/properties?count=500&since=null",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"regions",
+								"44",
+								"properties"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "500"
+								},
+								{
+									"key": "since",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Отсутствие необязательных параметров",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/regions/44/properties",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"regions",
+								"44",
+								"properties"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение Count ниже границы",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"    \r",
+									"pm.test(\"Invalid count\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.errors[0].message).to.eql(\"Invalid count 0, max: 500, min: 1\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/regions/44/properties?count=0&since=null",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"regions",
+								"44",
+								"properties"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "0"
+								},
+								{
+									"key": "since",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение Count выше границы",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"    \r",
+									"pm.test(\"Invalid count\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.errors[0].message).to.eql(\"Invalid count 501, max: 500, min: 1\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/regions/44/properties?count=501&since=null",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"regions",
+								"44",
+								"properties"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "501"
+								},
+								{
+									"key": "since",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение Count буквы",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"    \r",
+									"pm.test(\"Invalid count\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.errors.count[0]).to.eql(\"The value 'ббб' is not valid.\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/regions/44/properties?count=ббб&since=null",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"regions",
+								"44",
+								"properties"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "ббб"
+								},
+								{
+									"key": "since",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Поиск средств размещений по городу",
+			"item": [
+				{
+					"name": "Отсутствие API токена",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"    \r",
+									"pm.test(\"Token is not found\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"No API key found in request\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/cities/1/properties?count=500&since=null",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"cities",
+								"1",
+								"properties"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "500"
+								},
+								{
+									"key": "since",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Поиск средств размещения 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"    \r",
+									"pm.test(\"RUS\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    for (i = 0; i >= 0, i++;) {\r",
+									"        pm.expect(jsonData.properties[i].cityId).to.eql(\"1\");\r",
+									"    }\r",
+									"    \r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/cities/1/properties?count=500&since=null",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"cities",
+								"1",
+								"properties"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "500"
+								},
+								{
+									"key": "since",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Отсутствие необязательных параметров",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/cities/1/properties",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"cities",
+								"1",
+								"properties"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение Count ниже границы",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"    \r",
+									"pm.test(\"Invalid count\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.errors[0].message).to.eql(\"Invalid count 0, max: 500, min: 1\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/cities/1/properties?count=0&since=null",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"cities",
+								"1",
+								"properties"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "0"
+								},
+								{
+									"key": "since",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение Count ниже границы Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"    \r",
+									"pm.test(\"Invalid count\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.errors[0].message).to.eql(\"Invalid count 0, max: 500, min: 1\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/cities/1/properties?count=0&since=null",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"cities",
+								"1",
+								"properties"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "0"
+								},
+								{
+									"key": "since",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение Count буквы",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"    \r",
+									"pm.test(\"Invalid count\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.errors.count[0]).to.eql(\"The value 'ббб' is not valid.\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/cities/1/properties?count=ббб&since=null",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"cities",
+								"1",
+								"properties"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "ббб"
+								},
+								{
+									"key": "since",
+									"value": "null"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Получить список всех стран",
+			"item": [
+				{
+					"name": "Отсутствие API токена",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"    \r",
+									"pm.test(\"Token is not found\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"No API key found in request\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/countries",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"countries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получить список всех стран",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"    \r",
+									"\r",
+									"pm.test(\"Count is 244\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.countries.length).to.eql(244);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/countries",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"countries"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Получить список всех регионов страны",
+			"item": [
+				{
+					"name": "Получить список всех регионов RUS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"    \r",
+									"\r",
+									"pm.test(\"Count is 87\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.regions.length).to.eql(87);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/countries/RUS/regions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"countries",
+								"RUS",
+								"regions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение CountryCode ниже границы Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"    \r",
+									"pm.test(\"CountryCode is invalid\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"     pm.expect(jsonData.errors[0].message).to.eql(\"Country: RU is invalid\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/countries/RU/regions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"countries",
+								"RU",
+								"regions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение CountryCode выше границы",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"    \r",
+									"pm.test(\"CountryCode is invalid\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"     pm.expect(jsonData.errors[0].message).to.eql(\"Country: RUSS is invalid\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/countries/RUSS/regions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"countries",
+								"RUSS",
+								"regions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Получить список всех городов страны",
+			"item": [
+				{
+					"name": "Получить список всех городов RUS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"    \r",
+									"\r",
+									"pm.test(\"Count is 180\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.cities.length).to.eql(180);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"CountryCode is RUS\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"     pm.expect(jsonData.cities[1].countryCode).to.eql(\"RUS\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/countries/RUS/cities",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"countries",
+								"RUS",
+								"cities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение CountryCode ниже границы",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"    \r",
+									"pm.test(\"CountryCode is invalid\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"     pm.expect(jsonData.errors[0].message).to.eql(\"Country: RU is invalid\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/countries/RU/cities",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"countries",
+								"RU",
+								"cities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Невалидное значение CountryCode выше границы",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"    \r",
+									"pm.test(\"CountryCode is invalid\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"     pm.expect(jsonData.errors[0].message).to.eql(\"Country: RU is invalid\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{api_key}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v1/countries/RUSS/cities",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"countries",
+								"RUSS",
+								"cities"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "apiKey",
+			"value": "47306034-78fc-4767-bfd9-25e78825b985"
+		}
+	]
+}
